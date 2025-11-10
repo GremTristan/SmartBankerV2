@@ -1,0 +1,26 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+section {
+  padding: var(--spacing-lg) 0;
+}
+
+@media (min-width: 1024px) {
+  section {
+    padding: var(--spacing-xl) 0;
+  }
+}
+
+@media (max-width: 767px) {
+  section {
+    padding: var(--spacing-md) 0;
+  }
+}
+

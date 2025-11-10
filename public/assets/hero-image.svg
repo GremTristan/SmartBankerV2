@@ -1,0 +1,38 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#F5F5F5"/>
+  <!-- Central geometric composition -->
+  <g opacity="0.8">
+    <!-- Large central shape -->
+    <path d="M400 100 L600 200 L400 300 L200 200 Z" stroke="#000" stroke-width="4" fill="none"/>
+    <!-- Inner circle -->
+    <circle cx="400" cy="200" r="80" stroke="#000" stroke-width="3" fill="none" opacity="0.6"/>
+    <!-- Grid pattern -->
+    <line x1="400" y1="120" x2="400" y2="280" stroke="#000" stroke-width="2" opacity="0.3"/>
+    <line x1="220" y1="200" x2="580" y2="200" stroke="#000" stroke-width="2" opacity="0.3"/>
+    <!-- Data points -->
+    <circle cx="400" cy="200" r="6" fill="#000"/>
+    <circle cx="350" cy="150" r="4" fill="#000" opacity="0.7"/>
+    <circle cx="450" cy="150" r="4" fill="#000" opacity="0.7"/>
+    <circle cx="350" cy="250" r="4" fill="#000" opacity="0.7"/>
+    <circle cx="450" cy="250" r="4" fill="#000" opacity="0.7"/>
+    <!-- Connecting lines -->
+    <line x1="350" y1="150" x2="400" y2="200" stroke="#000" stroke-width="1.5" opacity="0.4"/>
+    <line x1="450" y1="150" x2="400" y2="200" stroke="#000" stroke-width="1.5" opacity="0.4"/>
+    <line x1="350" y1="250" x2="400" y2="200" stroke="#000" stroke-width="1.5" opacity="0.4"/>
+    <line x1="450" y1="250" x2="400" y2="200" stroke="#000" stroke-width="1.5" opacity="0.4"/>
+  </g>
+  <!-- Abstract elements representing disruption -->
+  <g opacity="0.3">
+    <rect x="100" y="400" width="120" height="80" stroke="#000" stroke-width="2" fill="none" transform="rotate(-15 160 440)"/>
+    <rect x="580" y="400" width="120" height="80" stroke="#000" stroke-width="2" fill="none" transform="rotate(15 640 440)"/>
+  </g>
+  <!-- Subtle background pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#000" stroke-width="0.5" opacity="0.05"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="url(#grid)"/>
+</svg>
+
+
