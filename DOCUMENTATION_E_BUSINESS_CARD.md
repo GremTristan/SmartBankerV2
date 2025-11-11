@@ -58,6 +58,46 @@ Si NFC n'est pas disponible, l'utilisateur peut télécharger une carte de conta
 - URL : Lien vers le Manifeste
 - Note : Description du mouvement
 
+### 4. Google Wallet
+
+Ajout de la carte SmartBankers à Google Wallet pour un accès rapide depuis le portefeuille numérique Android.
+
+**Caractéristiques :**
+- Détection automatique des appareils Android
+- Génération des données de configuration Google Wallet
+- QR code intégré dans la carte
+- Liens vers le Manifeste et la souscription
+
+**Utilisation :**
+1. Sur un appareil Android, cliquer sur "Ajouter à Google Wallet"
+2. Les données de configuration sont générées
+3. Pour une implémentation complète, un backend est nécessaire pour signer le JWT
+
+**Note :** Une implémentation complète nécessite :
+- Un compte développeur Google
+- Une clé API Google Wallet
+- Un backend pour signer les JWT
+
+### 5. Apple Wallet
+
+Ajout de la carte SmartBankers à Apple Wallet pour un accès rapide depuis le portefeuille numérique iOS.
+
+**Caractéristiques :**
+- Détection automatique des appareils iOS
+- Génération des données de configuration Apple Wallet
+- QR code intégré dans la carte
+- Liens vers le Manifeste et la souscription
+
+**Utilisation :**
+1. Sur un appareil iOS, cliquer sur "Ajouter à Apple Wallet"
+2. Les données de configuration sont générées au format JSON
+3. Pour une implémentation complète, un backend est nécessaire pour générer le fichier .pkpass signé
+
+**Note :** Une implémentation complète nécessite :
+- Un compte développeur Apple
+- Un certificat Apple Developer
+- Un backend pour générer et signer les fichiers .pkpass
+
 ## Architecture Technique
 
 ### Composants
@@ -179,6 +219,44 @@ npm install react-router-dom qrcode.react
 - Conversions depuis le Manifeste
 - Inscriptions depuis la page de souscription
 
+## Intégration des Wallets
+
+### Google Wallet
+
+Pour une intégration complète de Google Wallet, vous devez :
+
+1. **Créer un compte développeur Google Wallet**
+   - Accéder à [Google Wallet API](https://developers.google.com/wallet)
+   - Créer un projet Google Cloud
+   - Activer l'API Google Wallet
+
+2. **Configurer le backend**
+   - Installer la bibliothèque Google Wallet API
+   - Créer un service pour signer les JWT
+   - Générer les liens d'ajout vers Google Wallet
+
+3. **Mettre à jour le frontend**
+   - Remplacer la fonction `handleAddToGoogleWallet` par un appel API
+   - Utiliser le lien généré par le backend
+
+### Apple Wallet
+
+Pour une intégration complète d'Apple Wallet, vous devez :
+
+1. **Créer un compte développeur Apple**
+   - Accéder à [Apple Developer](https://developer.apple.com)
+   - Obtenir un certificat de passe
+   - Configurer l'identifiant de type de passe
+
+2. **Configurer le backend**
+   - Utiliser une bibliothèque de génération de passes (ex: `passkit`)
+   - Créer un service pour générer les fichiers .pkpass
+   - Signer les passes avec le certificat Apple
+
+3. **Mettre à jour le frontend**
+   - Remplacer la fonction `handleAddToAppleWallet` par un appel API
+   - Télécharger le fichier .pkpass généré
+
 ## Évolutions Futures
 
 - Support de plus de formats NFC
@@ -186,6 +264,8 @@ npm install react-router-dom qrcode.react
 - Analytics intégrés
 - Support de la géolocalisation pour les centres financiers
 - Intégration avec les réseaux sociaux professionnels
+- Backend pour génération complète des passes wallet
+- Support de Samsung Pay et autres wallets
 
 ## Support
 
