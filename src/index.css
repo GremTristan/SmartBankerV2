@@ -60,6 +60,15 @@ body {
   }
 }
 
+/* Améliorations mobile pour container */
+@media (max-width: 767px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+  }
+}
+
 /* Typography Scale */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
@@ -88,48 +97,81 @@ p {
 /* Optimisations de performance mobile */
 @media (max-width: 767px) {
   * {
-    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
   }
 
   /* Réduire les animations sur mobile pour meilleures performances */
   * {
-    animation-duration: 0.3s !important;
-    transition-duration: 0.2s !important;
+    animation-duration: 0.25s !important;
+    transition-duration: 0.15s !important;
+  }
+
+  /* Désactiver les animations complexes sur mobile */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
   }
 
   h1 {
-    font-size: 1.375rem;
+    font-size: 1.5rem;
     line-height: 1.15;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
   }
 
   h2 {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
     line-height: 1.2;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.625rem;
+    letter-spacing: -0.01em;
   }
 
   h3 {
-    font-size: 1rem;
+    font-size: 1.0625rem;
     line-height: 1.25;
     margin-bottom: 0.5rem;
   }
 
   p {
-    font-size: 0.8125rem;
-    line-height: 1.5;
-    margin-bottom: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-bottom: 0.875rem;
   }
 
   /* Optimiser le scroll sur mobile */
   html {
     -webkit-overflow-scrolling: touch;
-    scroll-behavior: auto;
+    scroll-behavior: smooth;
+    scroll-padding-top: 50px;
   }
 
   body {
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeSpeed;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    /* Safe area pour iOS */
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Améliorer les zones de touch */
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Améliorer la lisibilité */
+  .container {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
   }
 }
 
