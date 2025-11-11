@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Features from './components/Features'
@@ -8,11 +9,59 @@ import Footer from './components/Footer'
 import Loader from './components/Loader'
 import ToastNotification from './components/ToastNotification'
 import SignupModal from './components/SignupModal'
+import Documentation from './components/Documentation'
+import EBusinessCard from './components/EBusinessCard'
+import Manifeste from './components/Manifeste'
 import './App.css'
+
+function HomePage({ 
+  isLoading, 
+  isSignupModalOpen, 
+  setIsSignupModalOpen, 
+  showDocumentation, 
+  setShowDocumentation,
+  showEBusinessCard,
+  setShowEBusinessCard,
+  handleSignup 
+}) {
+  if (showDocumentation) {
+    return <Documentation onClose={() => setShowDocumentation(false)} />
+  }
+
+  return (
+    <>
+      <Loader isLoading={isLoading} />
+      <ToastNotification />
+      <SignupModal 
+        isOpen={isSignupModalOpen}
+        onClose={() => setIsSignupModalOpen(false)}
+        onSignup={handleSignup}
+      />
+      {showEBusinessCard && (
+        <EBusinessCard onClose={() => setShowEBusinessCard(false)} />
+      )}
+      <div className="app">
+        <Header 
+          onDocumentationClick={() => setShowDocumentation(true)}
+          onEBusinessCardClick={() => setShowEBusinessCard(true)}
+        />
+        <main>
+          <Hero onSignupClick={() => setIsSignupModalOpen(true)} />
+          <Features />
+          <SocialProof />
+          <Pricing onSignupClick={() => setIsSignupModalOpen(true)} />
+        </main>
+        <Footer />
+      </div>
+    </>
+  )
+}
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
   const [isSignupModalOpen, setIsSignupModalOpen] = useState(false)
+  const [showDocumentation, setShowDocumentation] = useState(false)
+  const [showEBusinessCard, setShowEBusinessCard] = useState(false)
 
   useEffect(() => {
     // Simulate loading time
@@ -29,25 +78,37 @@ function App() {
   }
 
   return (
-    <>
-      <Loader isLoading={isLoading} />
-      <ToastNotification />
-      <SignupModal 
-        isOpen={isSignupModalOpen}
-        onClose={() => setIsSignupModalOpen(false)}
-        onSignup={handleSignup}
+    <Routes>
+      <Route 
+        path="/" 
+        element={
+          <HomePage
+            isLoading={isLoading}
+            isSignupModalOpen={isSignupModalOpen}
+            setIsSignupModalOpen={setIsSignupModalOpen}
+            showDocumentation={showDocumentation}
+            setShowDocumentation={setShowDocumentation}
+            showEBusinessCard={showEBusinessCard}
+            setShowEBusinessCard={setShowEBusinessCard}
+            handleSignup={handleSignup}
+          />
+        } 
       />
-      <div className="app">
-        <Header />
-        <main>
-          <Hero onSignupClick={() => setIsSignupModalOpen(true)} />
-          <Features />
-          <SocialProof />
-          <Pricing onSignupClick={() => setIsSignupModalOpen(true)} />
-        </main>
-        <Footer />
-      </div>
-    </>
+      <Route 
+        path="/manifeste" 
+        element={
+          <>
+            <Loader isLoading={isLoading} />
+            <Manifeste onSignupClick={() => setIsSignupModalOpen(true)} />
+            <SignupModal 
+              isOpen={isSignupModalOpen}
+              onClose={() => setIsSignupModalOpen(false)}
+              onSignup={handleSignup}
+            />
+          </>
+        } 
+      />
+    </Routes>
   )
 }
 

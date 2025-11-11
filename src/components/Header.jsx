@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './Header.css'
 
-function Header() {
+function Header({ onDocumentationClick, onEBusinessCardClick }) {
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
@@ -28,6 +28,13 @@ function Header() {
             <li><a href="#features">Enjeux</a></li>
             <li><a href="#testimonials">Témoignages</a></li>
             <li><a href="#pricing">Agir</a></li>
+            <li><button onClick={onDocumentationClick} className="header__doc-link">Documentation</button></li>
+            <li><button onClick={onEBusinessCardClick} className="header__ebusiness-link" title="E-Business Card">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </button></li>
             <li><a href="#contact" className="header__cta">Contact</a></li>
           </ul>
         </nav>

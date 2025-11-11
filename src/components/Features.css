@@ -94,37 +94,61 @@
 
 @media (max-width: 767px) {
   .features__header {
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: 0.75rem;
   }
 
   .features__title {
-    font-size: 1.25rem;
-    margin-bottom: var(--spacing-xs);
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
   }
 
   .features__subtitle {
-    font-size: 0.875rem;
-    line-height: 1.6;
+    font-size: 0.8125rem;
+    line-height: 1.5;
   }
 
   .features__grid {
     grid-template-columns: 1fr;
-    gap: var(--spacing-sm);
-    margin-top: var(--spacing-sm);
+    gap: 0.75rem;
+    margin-top: 0.75rem;
   }
   
   .feature-card {
-    padding: var(--spacing-sm);
+    padding: 0.75rem;
+    border-width: 1px;
+  }
+
+  /* Désactiver les effets hover sur mobile */
+  .feature-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .feature-card:hover::before {
+    transform: none;
+  }
+
+  .feature-card:hover .feature-card__icon {
+    transform: none;
+    opacity: 0.8;
+  }
+
+  .feature-card__icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 0.5rem;
   }
 
   .feature-card__title {
-    font-size: 1rem;
-    margin-bottom: var(--spacing-xs);
+    font-size: 0.9375rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.25;
   }
 
   .feature-card__description {
-    font-size: 0.8125rem;
-    line-height: 1.6;
+    font-size: 0.75rem;
+    line-height: 1.5;
   }
 }
 

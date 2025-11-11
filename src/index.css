@@ -85,21 +85,51 @@ p {
   margin-bottom: var(--spacing-sm);
 }
 
+/* Optimisations de performance mobile */
 @media (max-width: 767px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Réduire les animations sur mobile pour meilleures performances */
+  * {
+    animation-duration: 0.3s !important;
+    transition-duration: 0.2s !important;
+  }
+
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.375rem;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
   }
 
   h2 {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
   }
 
   h3 {
-    font-size: 1.125rem;
+    font-size: 1rem;
+    line-height: 1.25;
+    margin-bottom: 0.5rem;
   }
 
   p {
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Optimiser le scroll sur mobile */
+  html {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: auto;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeSpeed;
   }
 }
 

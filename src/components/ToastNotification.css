@@ -56,15 +56,23 @@
 
 @media (max-width: 767px) {
   .toast-container {
-    bottom: 1rem;
-    right: 1rem;
-    left: 1rem;
+    bottom: 0.75rem;
+    right: 0.75rem;
+    left: 0.75rem;
+    gap: 0.5rem;
   }
   
   .toast-notification {
     max-width: 100%;
-    font-size: 0.8125rem;
-    padding: 0.625rem 0.875rem;
+    font-size: 0.75rem;
+    padding: 0.625rem 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    animation: slideInRight 0.2s ease-out, fadeOut 0.2s ease-in 3.8s forwards;
+  }
+
+  .toast-notification__icon {
+    width: 16px;
+    height: 16px;
   }
 }
 
