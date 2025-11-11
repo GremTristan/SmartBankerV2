@@ -20,7 +20,7 @@ section {
 
 @media (max-width: 767px) {
   section {
-    padding: var(--spacing-md) 0;
+    padding: var(--spacing-sm) 0;
   }
 }
 

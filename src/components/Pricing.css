@@ -269,12 +269,65 @@
 }
 
 @media (max-width: 767px) {
+  .pricing__title {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .pricing__subtitle {
+    font-size: 0.875rem;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.6;
+  }
+
   .pricing__benefits {
     gap: var(--spacing-xs);
   }
+
+  .pricing__benefits li {
+    font-size: 0.8125rem;
+    gap: 0.5rem;
+  }
+
+  .pricing-stat {
+    padding: var(--spacing-xs);
+  }
+
+  .pricing-stat__number {
+    font-size: 1.125rem;
+  }
+
+  .pricing-stat__label {
+    font-size: 0.75rem;
+  }
   
   .cta-box {
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm);
+  }
+
+  .cta-box__title {
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .cta-box__description {
+    font-size: 0.8125rem;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.5;
+  }
+
+  .cta-box__button {
+    font-size: 0.875rem;
+    padding: 0.625rem var(--spacing-sm);
+  }
+
+  .cta-box__note {
+    font-size: 0.75rem;
+    margin-top: var(--spacing-xs);
+  }
+
+  .progress-bar__label {
+    font-size: 0.75rem;
   }
 }
 

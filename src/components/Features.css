@@ -93,13 +93,38 @@
 }
 
 @media (max-width: 767px) {
+  .features__header {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .features__title {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .features__subtitle {
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
   .features__grid {
     grid-template-columns: 1fr;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
   }
   
   .feature-card {
     padding: var(--spacing-sm);
+  }
+
+  .feature-card__title {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .feature-card__description {
+    font-size: 0.8125rem;
+    line-height: 1.6;
   }
 }
 
