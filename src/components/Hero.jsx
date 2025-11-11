@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import './Hero.css'
 
-function Hero() {
+function Hero({ onSignupClick }) {
   const [imageLoaded, setImageLoaded] = useState(false)
+  const [onlineCount, setOnlineCount] = useState(127)
 
   useEffect(() => {
     // Simulate image loading
@@ -10,6 +11,18 @@ function Hero() {
       setImageLoaded(true)
     }, 500)
     return () => clearTimeout(timer)
+  }, [])
+
+  useEffect(() => {
+    // Simulate real-time online count updates
+    const interval = setInterval(() => {
+      setOnlineCount(prev => {
+        const change = Math.floor(Math.random() * 5) - 2 // -2 to +2
+        return Math.max(100, Math.min(200, prev + change))
+      })
+    }, 8000) // Update every 8 seconds
+
+    return () => clearInterval(interval)
   }, [])
 
   return (
@@ -28,12 +41,23 @@ function Hero() {
               salariés voient leurs emplois disparaître au profit de l'automatisation.
             </p>
             <div className="hero__cta-group">
-              <a href="#pricing" className="hero__cta hero__cta--primary">
+              <button 
+                onClick={() => onSignupClick?.()}
+                className="hero__cta hero__cta--primary"
+              >
                 Prendre conscience
-              </a>
+              </button>
               <a href="#features" className="hero__cta hero__cta--secondary">
                 En savoir plus
               </a>
+            </div>
+            <div className="hero__live-stats">
+              <div className="live-stats">
+                <div className="live-stats__indicator"></div>
+                <span className="live-stats__text">
+                  <strong>{onlineCount}</strong> personnes consultent cette page
+                </span>
+              </div>
             </div>
           </div>
           <div className={`hero__image-wrapper ${imageLoaded ? 'hero__image-wrapper--loaded' : ''}`}>

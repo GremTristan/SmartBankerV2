@@ -1,6 +1,20 @@
+import { useState, useEffect } from 'react'
 import './Pricing.css'
 
-function Pricing() {
+function Pricing({ onSignupClick }) {
+  const [signupsToday, setSignupsToday] = useState(47)
+  const [progress, setProgress] = useState(68)
+
+  useEffect(() => {
+    // Simulate progress updates
+    const interval = setInterval(() => {
+      setSignupsToday(prev => prev + Math.floor(Math.random() * 2))
+      setProgress(prev => Math.min(95, prev + Math.random() * 0.5))
+    }, 12000)
+
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <section id="pricing" className="pricing">
       <div className="container">
@@ -11,6 +25,12 @@ function Pricing() {
               Rejoignez le mouvement pour une IA éthique, transparente et respectueuse 
               des droits des travailleurs et de la vie privée.
             </p>
+            <div className="pricing__stats">
+              <div className="pricing-stat">
+                <span className="pricing-stat__number">{signupsToday}+</span>
+                <span className="pricing-stat__label">inscriptions aujourd'hui</span>
+              </div>
+            </div>
             <ul className="pricing__benefits">
               <li>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -40,13 +60,33 @@ function Pricing() {
           </div>
           <div className="pricing__cta-box">
             <div className="cta-box">
+              <div className="cta-box__badge">
+                <span className="badge badge--popular">Populaire</span>
+              </div>
               <h3 className="cta-box__title">Rejoignez-nous</h3>
               <p className="cta-box__description">
                 Inscrivez-vous pour recevoir des informations et participer au mouvement
               </p>
-              <a href="#contact" className="cta-box__button">
+              <div className="cta-box__progress">
+                <div className="progress-bar">
+                  <div className="progress-bar__label">
+                    <span>Places disponibles</span>
+                    <span className="progress-bar__percentage">{Math.round(progress)}%</span>
+                  </div>
+                  <div className="progress-bar__track">
+                    <div 
+                      className="progress-bar__fill" 
+                      style={{ width: `${progress}%` }}
+                    ></div>
+                  </div>
+                </div>
+              </div>
+              <button 
+                onClick={() => onSignupClick?.()}
+                className="cta-box__button"
+              >
                 S'inscrire maintenant
-              </a>
+              </button>
               <p className="cta-box__note">Gratuit • Sans engagement • Respect de la vie privée</p>
             </div>
           </div>

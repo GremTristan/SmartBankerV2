@@ -1,0 +1,226 @@
+.signup-modal__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  animation: fadeIn 0.3s ease-out;
+  padding: var(--spacing-sm);
+}
+
+.signup-modal {
+  background: var(--color-white);
+  border: 2px solid var(--color-gray-medium);
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  padding: var(--spacing-lg);
+  position: relative;
+  animation: slideUp 0.3s ease-out;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.signup-modal__close {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gray-dark);
+  transition: var(--transition-fast);
+  border-radius: 4px;
+}
+
+.signup-modal__close:hover {
+  background: var(--color-gray-light);
+  color: var(--color-black);
+}
+
+.signup-modal__header {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.signup-modal__title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-black);
+}
+
+.signup-modal__subtitle {
+  font-size: clamp(0.9375rem, 1.2vw, 1rem);
+  color: var(--color-gray-dark);
+  line-height: 1.6;
+}
+
+.signup-modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.signup-modal__input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.signup-modal__label {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+.signup-modal__input {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 2px solid var(--color-gray-medium);
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: var(--font-primary);
+  transition: var(--transition-fast);
+  background: var(--color-white);
+  color: var(--color-black);
+}
+
+.signup-modal__input:focus {
+  outline: none;
+  border-color: var(--color-black);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.signup-modal__input:disabled {
+  background: var(--color-gray-light);
+  cursor: not-allowed;
+}
+
+.signup-modal__input::placeholder {
+  color: var(--color-gray-medium);
+}
+
+.signup-modal__submit {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-black);
+  color: var(--color-white);
+  border: 2px solid var(--color-black);
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--font-primary);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+}
+
+.signup-modal__submit:hover:not(:disabled) {
+  background: var(--color-gray-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.signup-modal__submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.signup-modal__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.signup-modal__spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: var(--color-white);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.signup-modal__note {
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--color-gray-dark);
+  margin-top: var(--spacing-sm);
+}
+
+.signup-modal__success {
+  text-align: center;
+  padding: var(--spacing-md) 0;
+}
+
+.signup-modal__success-icon {
+  margin: 0 auto var(--spacing-md);
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-modal__success-title {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-black);
+}
+
+.signup-modal__success-text {
+  font-size: clamp(0.9375rem, 1.2vw, 1rem);
+  color: var(--color-gray-dark);
+  line-height: 1.6;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 767px) {
+  .signup-modal {
+    padding: var(--spacing-md);
+    max-width: 100%;
+  }
+
+  .signup-modal__close {
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+  }
+}
+
