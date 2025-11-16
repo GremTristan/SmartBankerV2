@@ -10,6 +10,7 @@ import Loader from './components/Loader'
 import ToastNotification from './components/ToastNotification'
 import SignupModal from './components/SignupModal'
 import Documentation from './components/Documentation'
+import RoadmapViewer from './components/RoadmapViewer'
 import EBusinessCard from './components/EBusinessCard'
 import Manifeste from './components/Manifeste'
 import './App.css'
@@ -20,10 +21,16 @@ function HomePage({
   setIsSignupModalOpen, 
   showDocumentation, 
   setShowDocumentation,
+  showRoadmap,
+  setShowRoadmap,
   showEBusinessCard,
   setShowEBusinessCard,
   handleSignup 
 }) {
+  if (showRoadmap) {
+    return <RoadmapViewer onClose={() => setShowRoadmap(false)} />
+  }
+  
   if (showDocumentation) {
     return <Documentation onClose={() => setShowDocumentation(false)} />
   }
@@ -43,6 +50,7 @@ function HomePage({
       <div className="app">
         <Header 
           onDocumentationClick={() => setShowDocumentation(true)}
+          onRoadmapClick={() => setShowRoadmap(true)}
           onEBusinessCardClick={() => setShowEBusinessCard(true)}
         />
         <main>
@@ -61,6 +69,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true)
   const [isSignupModalOpen, setIsSignupModalOpen] = useState(false)
   const [showDocumentation, setShowDocumentation] = useState(false)
+  const [showRoadmap, setShowRoadmap] = useState(false)
   const [showEBusinessCard, setShowEBusinessCard] = useState(false)
 
   useEffect(() => {
@@ -88,6 +97,8 @@ function App() {
             setIsSignupModalOpen={setIsSignupModalOpen}
             showDocumentation={showDocumentation}
             setShowDocumentation={setShowDocumentation}
+            showRoadmap={showRoadmap}
+            setShowRoadmap={setShowRoadmap}
             showEBusinessCard={showEBusinessCard}
             setShowEBusinessCard={setShowEBusinessCard}
             handleSignup={handleSignup}

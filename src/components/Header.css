@@ -3,17 +3,17 @@
   top: 0;
   left: 0;
   width: 100%;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(0, 35, 149, 0.95);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid transparent;
+  border-bottom: 2px solid var(--color-gold);
   z-index: 1000;
   transition: var(--transition-smooth);
 }
 
 .header--scrolled {
-  background: rgba(255, 255, 255, 0.98);
-  border-bottom-color: var(--color-gray-medium);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+  background: rgba(0, 35, 149, 0.98);
+  border-bottom-color: var(--color-gold-accent);
+  box-shadow: 0 2px 20px rgba(212, 175, 55, 0.2);
 }
 
 .header__nav {
@@ -30,7 +30,7 @@
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.25rem;
-  color: var(--color-black);
+  color: var(--color-gold);
   text-decoration: none;
 }
 
@@ -52,7 +52,7 @@
 .header__menu a,
 .header__doc-link,
 .header__ebusiness-link {
-  color: var(--color-black);
+  color: var(--color-white);
   text-decoration: none;
   font-size: 0.9375rem;
   font-weight: 500;
@@ -75,8 +75,8 @@
   bottom: -4px;
   left: 0;
   width: 0;
-  height: 1px;
-  background: var(--color-black);
+  height: 2px;
+  background: var(--color-gold);
   transition: width 0.3s ease;
 }
 
@@ -92,9 +92,9 @@
   padding: 0;
 }
 
-.header__ebusiness-link:hover {
-  background: rgba(0, 0, 0, 0.05);
-}
+  .header__ebusiness-link:hover {
+    background: rgba(212, 175, 55, 0.2);
+  }
 
 .header__menu a::after {
   content: '';
@@ -102,8 +102,8 @@
   bottom: -4px;
   left: 0;
   width: 0;
-  height: 1px;
-  background: var(--color-black);
+  height: 2px;
+  background: var(--color-gold);
   transition: width 0.3s ease;
 }
 
@@ -113,9 +113,10 @@
 
 .header__cta {
   padding: var(--spacing-xs) var(--spacing-sm);
-  background: var(--color-black);
-  color: var(--color-white) !important;
+  background: var(--color-gold);
+  color: var(--color-imperial-blue) !important;
   border-radius: 2px;
+  font-weight: 600;
 }
 
 .header__cta::after {
@@ -123,8 +124,9 @@
 }
 
 .header__cta:hover {
-  background: var(--color-gray-dark);
+  background: var(--color-gold-accent);
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
 }
 
 @media (max-width: 767px) {
